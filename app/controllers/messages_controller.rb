@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @messages = Message.all
+    @messages = Message.paginate(:page => params[:page])
   end
 
   def new
@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(params[:message])
 
     if @message.save
-      @messages = Message.all
+      @messages = Message.paginate(:page => params[:page])
     end    
   end  
 
@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
 
     if @message.update_attributes(params[:message])
-      @messages = Message.all
+      @messages = Message.paginate(:page => params[:page])
     end   
   end   
 
@@ -40,6 +40,6 @@ class MessagesController < ApplicationController
   def destroy
     @message = current_user.messages.find(params[:id])
     @message.destroy
-    @messages = Message.all
+    @messages = Message.paginate(:page => params[:page])
   end  
 end

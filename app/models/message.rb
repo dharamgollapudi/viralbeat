@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
+  self.per_page = 8
+  
   belongs_to :user
   
   attr_accessible :title, :body

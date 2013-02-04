@@ -26,3 +26,7 @@ hr {
   border-color: #D6D6D6;
   border-top-width: 1px;
 }
+
+.pagination ul > li > a {
+  color: #000000;
+}

@@ -33,3 +33,7 @@
     </div>
   </div>
 <% end %>
+
+<div id="message_pagination" style="float:right">
+  <%= will_paginate @messages, :renderer => BootstrapPagination::Rails %>
+</div>
