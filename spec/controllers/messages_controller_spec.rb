@@ -22,53 +22,67 @@ describe 'messages controller' do
   end
 
   describe 'index page' do
-    it 'should have message list page selector' do
-      visit messages_path
-      page.should have_selector('#message_list')
-    end
+    # it 'should have message list page selector' do
+    #   visit messages_path
+    #   page.should have_selector('#message_list')
+    # end
 
-    it 'should display no messages if there are no messages in the system' do
+    # it 'should display no messages if there are no messages in the system' do
+    #   Message.delete_all 
+    #   visit messages_path
+    #   page.should have_content('No Messages')
+    # end
+
+    # it 'should have message id selection' do
+    #   message = @user.messages.create(
+    #     :title => "test title",
+    #     :body => "test body"
+    #   )
+    #   visit '/messages'
+    #   page.should have_selector("#message_#{message.id}")
+    # end
+
+    # it 'lets the user post a message', :js => true do
+    #   Message.delete_all 
+    #   visit messages_path
+    #   page.should have_selector('#message_new')
+    #   click_button "message_new"
+    #   page.should have_selector('#message_form', :visible => true)
+    #   page.should have_content('Submit a Posting')
+    #   fill_in 'message[title]', :with => 'Test Title'
+    #   fill_in 'message[body]', :with => 'Test Body'
+    #   click_on 'Submit'
+    #   page.should have_content('Test Title')
+    # end 
+
+    # it 'lets the user to edit a message', :js => true do
+    #   Message.delete_all 
+    #   message = @user.messages.create(
+    #     :title => "test title",
+    #     :body => "test body"
+    #   )    
+    #   visit messages_path
+    #   page.should have_selector("#edit_message_#{message.id}")
+    #   click_link "edit_message_#{message.id}"
+    #   page.should have_selector('#message_form', :visible => true)
+    #   fill_in 'message[title]', :with => 'Test Title (updated)'  
+    #   fill_in 'message[body]', :with => 'Test Body (updated)'
+    #   click_on 'Update'
+    #   page.should have_content('Test Title (updated)')
+    # end  
+
+    it 'lets the user look at the detail view of a message', :js => true do
       Message.delete_all 
-      visit messages_path
-      page.should have_content('No Messages')
-    end
-
-    it 'should have message id selection' do
       message = @user.messages.create(
-        :title => "test title",
-        :body => "test body"
-      )
-      visit '/messages'
-      page.should have_selector("#message_#{message.id}")
-    end
-
-    it 'lets the user post a message', :js => true do
-      Message.delete_all 
-      visit messages_path
-      page.should have_selector('#message_new')
-      click_button "message_new"
-      page.should have_selector('#message_form', :visible => true)
-      page.should have_content('Submit a Posting')
-      fill_in 'message[title]', :with => 'Test Title'
-      fill_in 'message[body]', :with => 'Test Body'
-      click_on 'Submit'
-      page.should have_content('Test Title')
-    end 
-
-    it 'lets the user to edit a message', :js => true do
-      Message.delete_all 
-      message = @user.messages.create(
-        :title => "test title",
-        :body => "test body"
+        :title => "Test Title",
+        :body => "Test Body"
       )    
       visit messages_path
-      page.should have_selector("#edit_message_#{message.id}")
-      click_link "edit_message_#{message.id}"
-      page.should have_selector('#message_form', :visible => true)
-      fill_in 'message[title]', :with => 'Test Title (updated)'  
-      fill_in 'message[body]', :with => 'Test Body (updated)'
-      click_on 'Update'
-      page.should have_content('Test Title (updated)')
-    end     
+      page.should have_selector("#detail_message_#{message.id}")
+      click_link "detail_message_#{message.id}"
+      page.should have_selector("#message_detail_#{message.id}", :visible => true)
+      page.should have_content('Test Title')
+      page.should have_content('Test Body')      
+    end        
   end
 end
