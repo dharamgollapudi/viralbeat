@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<div class="container">
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "Viralbeat Message Board", root_path, :class => "brand" %>
+        <div class="nav-collapse collapse">
+          <ul class="nav pull-right">
+            <li><%= link_to "Home", root_url %></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
 	<% if notice %>
 		<p class="notice"><%= notice %></p>
 	<% end %>
@@ -17,6 +31,8 @@
   <% end %>
 
 	<%= yield %>
+  </div> <!-- /container -->
+</div>
 
 </body>
 </html>
