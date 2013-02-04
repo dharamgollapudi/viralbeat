@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(params[:message])
 
     if @message.save
-      flash[:notice] = "Successfully created Message."
       @messages = Message.all
     end    
   end  
@@ -26,7 +25,6 @@ class MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
 
     if @message.update_attributes(params[:message])
-      flash[:notice] = "Successfully updated Message."
       @messages = Message.all
     end   
   end   
@@ -37,5 +35,11 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.js 
     end
+  end  
+
+  def destroy
+    @message = current_user.messages.find(params[:id])
+    @message.destroy
+    @messages = Message.all
   end  
 end

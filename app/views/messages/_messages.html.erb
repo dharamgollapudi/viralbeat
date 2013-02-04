@@ -22,11 +22,11 @@
       </div>
     <div style="float:left; width: 5%; text-align: center; padding-top: 12px;">
       <% if message.user == current_user %>
-        <%= link_to message, :remote => true, :confirm => 'Are you sure?', :method => :delete do %>
+        <%= link_to message, :remote => true, :id => "delete_message_#{message.id}", :confirm => 'Are you sure?', :method => :delete do %>
           <i class="icon-fullscreen"></i>
         <% end %>
       <% else %>
-        <%= link_to '#', :onclick => "alert('Nice try, you can only delete your own message');" do %>
+        <%= link_to '#', :id => "delete_message_#{message.id}", :onclick => "alert('Nice try, you can only delete your own message');" do %>
           <i class="icon-fullscreen"></i>
         <% end %>
       <% end %>
