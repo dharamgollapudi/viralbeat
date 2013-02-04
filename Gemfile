@@ -33,4 +33,6 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'capybara'
 	gem 'autotest-rails'
+	gem 'autotest-fsevent'
+	gem 'autotest-growl'
 end
