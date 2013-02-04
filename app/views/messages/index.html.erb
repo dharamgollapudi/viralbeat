@@ -7,6 +7,11 @@
         <button class="btn" type="button" id="message_new"> <i class="icon-pencil"></i> Post</button>
       <% end %>
     </div>
+    <div style="width:50%; float:right; text-align: right;">
+      <%= link_to messages_path, :remote => true do %>
+        <button class="btn" type="button" id="message_list_button"> <i class="icon-list"></i> List</button>
+      <% end %>
+    </div>    
   </div>
 </div>
 
