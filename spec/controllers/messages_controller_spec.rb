@@ -28,5 +28,14 @@ describe 'messages controller' do
       visit '/messages'
       page.should have_selector("#message_#{message.id}")
     end
+
+    it 'lets the user post a message', :js => true do
+      visit messages_path
+      click_link "message_new"
+      fill_in 'Title', :with => 'Test Title'
+      fill_in 'Body', :with => 'Test Body'
+      click_on 'Submit'
+      page.should have_content('Test Title')
+    end    
   end
 end
