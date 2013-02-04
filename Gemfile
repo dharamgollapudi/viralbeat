@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
-
 
 gem 'jquery-rails'
 gem 'devise'
@@ -33,6 +31,7 @@ gem 'thin'
 # gem 'debugger'
 
 group :development, :test do
+  gem 'sqlite3'  
   gem 'debugger'
 	gem 'rspec'
 	gem 'rspec-rails'
