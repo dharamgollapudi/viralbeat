@@ -3,11 +3,16 @@
       -moz-border-radius: 5px;
       border-radius: 5px;">
     <div style="width:50%; float:left;">
-      <%= link_to new_message_path, :remote => true, :id => "message_new" do %>
-        <button class="btn" type="button"> <i class="icon-pencil"></i> Post</button>
+      <%= link_to new_message_path, :remote => true do %>
+        <button class="btn" type="button" id="message_new"> <i class="icon-pencil"></i> Post</button>
       <% end %>
     </div>
   </div>
+</div>
+
+<div id="message_form" style="display:none; background-color: #f5f5f5; overflow: hidden; padding: 20px; margin-bottom: 5px; -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;">
 </div>
 
 <div id="message_list">
