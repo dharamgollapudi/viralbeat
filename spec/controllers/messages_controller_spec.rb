@@ -54,5 +54,22 @@ describe 'messages controller' do
       click_on 'Submit'
       page.should have_content('Test Title')
     end 
+
+    it 'lets the user to edit a message', :js => true do
+      Message.delete_all 
+      message = @user.messages.create(
+        :title => "test title",
+        :body => "test body"
+      )    
+      visit messages_path
+      page.should have_selector("edit_message_#{message.id}")
+      click_link "edit_message_#{message.id}"
+      page.should have_selector('#message_form', :visible => true)
+      fill_in 'message[title]', :with => 'Test Title (updated)'  
+      fill_in 'message[body]', :with => 'Test Body (updated)'
+      click_on 'Submit'
+      page.should have_content('Test Title (updated)')
+      page.should have_content('Test Body (updated)')
+    end     
   end
 end
