@@ -1,6 +1,7 @@
 Viralbeat::Application.routes.draw do
   devise_for :users, :controllers => {
-    :registrations  =>  'registrations'
+    :registrations  =>  'registrations',
+    :sessions       =>  'sessions',
   }
 
   root :to => 'home#index'
