@@ -10,9 +10,12 @@
   <% end %>
 </div>
 <div style="float: left; width: 90%; ">
-  <span style="font-weight: bold;" class="post-title"><%= @message.title %></span><br/>
+  <span style="font-weight: bold;" class="post-title"><%= @message.title %></span>
+  <br/>
   posted <%= @message.created_at.strftime("%B %d %Y") %> @ <%= @message.created_at.strftime("%M:%S %p")%>
   by <%= @message.user.name %>
+  <br/>
+  <br/>
   <hr/>
   <p>
     <%= simple_format(@message.body) %>

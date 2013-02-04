@@ -19,3 +19,10 @@ body {
 .navbar .nav > li {
   line-height: 36px;
 }
+
+hr {
+  margin-top: 0px;
+  margin-bottom: 15px 0px;
+  border-color: #D6D6D6;
+  border-top-width: 1px;
+}
