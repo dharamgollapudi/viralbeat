@@ -83,6 +83,19 @@ describe 'messages controller' do
       page.should have_selector("#message_detail_#{message.id}", :visible => true)
       page.should have_content('Test Title')
       page.should have_content('Test Body')      
-    end        
+    end    
+
+    it 'lets the user delete his own message', :js => true do
+      Message.delete_all 
+      message = @user.messages.create(
+        :title => "Test Title",
+        :body => "Test Body"
+      )    
+      visit messages_path
+      page.should have_selector("#delete_message_#{message.id}")
+      click_link "delete_message_#{message.id}"
+      page.driver.browser.switch_to.alert.accept
+      page.should have_selector("#message_list")
+    end         
   end
 end
