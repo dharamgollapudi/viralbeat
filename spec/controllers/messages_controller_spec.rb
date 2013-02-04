@@ -96,6 +96,24 @@ describe 'messages controller' do
       click_link "delete_message_#{message.id}"
       page.driver.browser.switch_to.alert.accept
       page.should have_selector("#message_list")
-    end         
+    end 
+
+    it 'lets the user switch to list view', :js => true do
+      Message.delete_all 
+      message = @user.messages.create(
+        :title => "Test Title",
+        :body => "Test Body"
+      )    
+      visit messages_path
+      page.should have_selector('#message_new')
+      click_button "message_new"
+      page.should have_selector('#message_form', :visible => true)
+      page.should have_content('Submit a Posting')
+      click_button "message_list_button"   
+      page.should have_selector('#message_list')
+      page.should have_content('Test Title')
+    end     
+
+
   end
 end
