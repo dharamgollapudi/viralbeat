@@ -8,4 +8,8 @@ describe Message do
   it "is not valid without body" do
     Message.create(:title => "test", :body => nil).should_not be_valid
   end  
+
+  it "is not valid without the associated user" do
+    Message.create(:title => "test", :body => "message").should_not be_valid
+  end    
 end
