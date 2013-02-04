@@ -29,6 +29,7 @@ gem 'thin'
 # gem 'debugger'
 
 group :development, :test do
+  gem 'debugger'
 	gem 'rspec'
 	gem 'rspec-rails'
 	gem 'capybara'
