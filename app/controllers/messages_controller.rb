@@ -17,4 +17,17 @@ class MessagesController < ApplicationController
       @messages = Message.all
     end    
   end  
+
+  def edit
+    @message = current_user.messages.find(params[:id])
+  end 
+
+  def update
+    @message = current_user.messages.find(params[:id])
+
+    if @message.update_attributes(params[:message])
+      flash[:notice] = "Successfully updated Message."
+      @messages = Message.all
+    end   
+  end   
 end

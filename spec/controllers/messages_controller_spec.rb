@@ -62,14 +62,13 @@ describe 'messages controller' do
         :body => "test body"
       )    
       visit messages_path
-      page.should have_selector("edit_message_#{message.id}")
+      page.should have_selector("#edit_message_#{message.id}")
       click_link "edit_message_#{message.id}"
       page.should have_selector('#message_form', :visible => true)
       fill_in 'message[title]', :with => 'Test Title (updated)'  
       fill_in 'message[body]', :with => 'Test Body (updated)'
-      click_on 'Submit'
+      click_on 'Update'
       page.should have_content('Test Title (updated)')
-      page.should have_content('Test Body (updated)')
     end     
   end
 end

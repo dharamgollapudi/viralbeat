@@ -1,0 +1,7 @@
+<% if @message.errors.any? %>
+  $("#message_list").hide();
+  $("#message_form").html("<%= escape_javascript(render(:partial => "form"))%>").show();
+<% else %>
+  $("#message_form").hide();
+  $("#message_list").html("<%= escape_javascript( render "messages" ) %>").show();
+<% end %>
