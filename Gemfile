@@ -26,3 +26,8 @@ gem 'thin'
 
 # To use debugger
 # gem 'debugger'
+
+group :development, :test do
+	gem 'rspec'
+	gem 'rspec-rails'
+end
