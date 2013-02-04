@@ -10,5 +10,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation
   # attr_accessible :title, :body, :remember_me
 
-  has_many :messages
+  has_many :messages, :dependent => :destroy
+
+
+  def name
+    "User #{self.id}"
+  end
 end

@@ -14,6 +14,8 @@ describe Message do
   end 
 
   it "is valid with title, body and the associated user" do
+    User.destroy_all
+    Message.destroy_all
     user = User.create(
       :email => "test@viralbeat.com",
       :password => "password",

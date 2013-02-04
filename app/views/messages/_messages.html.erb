@@ -1,0 +1,23 @@
+<% @messages.each do |message| %>
+  <div id="message_<%= message.id %>" style="float-left; background-color: #f5f5f5; overflow: hidden; padding: 20px; margin-bottom: 5px; -webkit-border-radius: 5px;
+  -moz-border-radius: 5px; border-radius: 5px;">
+    <div style="float:left; width: 5%; text-align: left; padding-top: 12px;">
+      <%= link_to edit_message_path(message), :remote => true do %>
+        <i class="icon-edit"></i>
+      <% end %>
+    </div>
+      <div style="float: left; width: 90%; ">
+        <%= link_to message, :remote => true, :method => :get, :style => "text-decoration: none; color: #333333;" do %>
+
+        <span style="font-weight: bold;" class="message-title"><%= message.title %></span><br/>
+        posted <%= message.created_at.strftime("%B %d %Y") %> @ <%= message.created_at.strftime("%M:%S %p")%>
+        by <%= message.user.name %>
+        <% end %>
+      </div>
+    <div style="float:left; width: 5%; text-align: center; padding-top: 12px;">
+      <%= link_to message, :remote => true, :confirm => 'Are you sure?', :method => :delete do %>
+        <i class="icon-fullscreen"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>
