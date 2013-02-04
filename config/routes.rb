@@ -1,10 +1,12 @@
 Viralbeat::Application.routes.draw do
+  root :to => 'home#index'
   devise_for :users, :controllers => {
     :registrations  =>  'registrations',
     :sessions       =>  'sessions',
   }
+  resources :messages
 
-  root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
