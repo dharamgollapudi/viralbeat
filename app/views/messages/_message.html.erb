@@ -1,0 +1,33 @@
+<div id="message_detail_<%= @message.id %>" style="float:left; width: 5%; text-align: center; padding-top: 15px;">
+  <% if @message.user == current_user %>
+    <%= link_to edit_message_path(@message), :remote => true, :id => "edit_message_#{@message.id}" do %>
+      <i class="icon-edit"></i>
+    <% end %>
+  <% else %>
+    <%= link_to '#', :onclick => "alert('Nice try, you can only edit your own message');", :id => "edit_message_#{@message.id}" do %>
+      <i class="icon-edit"></i>
+    <% end %>
+  <% end %>
+</div>
+<div style="float: left; width: 90%; ">
+  <span style="font-weight: bold;" class="post-title"><%= @message.title %></span><br/>
+  posted <%= @message.created_at.strftime("%B %d %Y") %> @ <%= @message.created_at.strftime("%M:%S %p")%>
+  by <%= @message.user.name %>
+  <hr/>
+  <p>
+    <%= simple_format(@message.body) %>
+  </p>
+  <div style="float:right; width: 95%; text-align: right; padding-top: 15px;">
+    <% if @message.user == current_user %>
+      <%= link_to edit_message_path(@message), :remote => true, :id => "edit_message_#{@message.id}" do %>
+      <button class="btn" type="button"> Edit</button>
+      <% end %>
+    <% else %>
+      <%= link_to '#', :onclick => "alert('Nice try, you can only edit your own message');", :id => "edit_message_#{@message.id}" do %>
+      <button class="btn" type="button"> Edit</button>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+

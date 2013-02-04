@@ -13,7 +13,7 @@
       <% end %>
     </div>
       <div style="float: left; width: 90%; ">
-        <%= link_to message, :remote => true, :method => :get, :style => "text-decoration: none; color: #333333;" do %>
+        <%= link_to message, :remote => true, :method => :get, :id => "detail_message_#{message.id}", :style => "text-decoration: none; color: #333333;" do %>
 
         <span style="font-weight: bold;" class="message-title"><%= message.title %></span><br/>
         posted <%= message.created_at.strftime("%B %d %Y") %> @ <%= message.created_at.strftime("%M:%S %p")%>

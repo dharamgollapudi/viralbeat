@@ -30,4 +30,12 @@ class MessagesController < ApplicationController
       @messages = Message.all
     end   
   end   
+
+  def show
+    @message = Message.find(params[:id])
+    
+    respond_to do |format|
+      format.js 
+    end
+  end  
 end
