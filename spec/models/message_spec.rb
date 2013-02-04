@@ -11,5 +11,17 @@ describe Message do
 
   it "is not valid without the associated user" do
     Message.create(:title => "test", :body => "message").should_not be_valid
-  end    
+  end 
+
+  it "is valid with title, body and the associated user" do
+    user = User.create(
+      :email => "test@viralbeat.com",
+      :password => "password",
+      :password_confirmation => "password"
+    )
+    user.messages.create(
+      :title => "test", 
+      :body => "message"
+    ).should be_valid
+  end      
 end
