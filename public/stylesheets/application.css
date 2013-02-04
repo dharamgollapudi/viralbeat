@@ -1,0 +1,21 @@
+body {
+  padding-top: 75px; /* 75px to make the container go all the way to the bottom of the topbar */
+}
+
+.navbar {
+  line-height: 36px;
+}
+
+.navbar-inner {
+  background: none;
+}
+
+.navbar .brand {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.navbar .nav > li {
+  line-height: 36px;
+}
