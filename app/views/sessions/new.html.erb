@@ -1,21 +1,35 @@
 <div id="sign_in">
   <h3>Sign in</h3>
 
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),
-      :html => {:class => "form-horizontal"}) do |f| %>
-    <div class="control-group">
-      <%= f.label :email, :class => "control-label" %>
-      <div class="controls"><%= f.email_field :email, :autofocus => true %></div>
+  <div class="row">
+    <div class="span5">
+
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),
+          :html => {:class => "form-horizontal"}) do |f| %>
+        <div class="control-group">
+          <%= f.label :email, :class => "control-label" %>
+          <div class="controls"><%= f.email_field :email, :autofocus => true %></div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :password, :class => "control-label" %>
+          <div class="controls"><%= f.password_field :password %></div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls"><%= f.button "Sign in", :class => "btn" %></div>
+        </div>
+      <% end %>
     </div>
 
-    <div class="control-group">
-      <%= f.label :password, :class => "control-label" %>
-      <div class="controls"><%= f.password_field :password %></div>
+    <div class="span2" style="text-align:center;">
+      (or)
     </div>
 
-    <div class="control-group">
-      <div class="controls"><%= f.button "Sign in", :class => "btn" %></div>
+    <div class="span5">
+      <%= link_to user_omniauth_authorize_path(:facebook) do %>
+        <%= image_tag("login_with_facebook.png") %>
+      <% end %>
     </div>
-  <% end %>
-
+  </div>
 </div>  

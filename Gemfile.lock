@@ -182,6 +182,7 @@ DEPENDENCIES
   debugger
   devise
   jquery-rails
+  omniauth
   omniauth-facebook
   rails (= 3.2.11)
   rspec
