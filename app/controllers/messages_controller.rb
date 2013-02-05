@@ -2,7 +2,9 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @messages = Message.paginate(:page => params[:page]).order_by_latest
+    @messages = Message.page(params[:page])
+                       .includes(:user)
+                       .order_by_latest
   end
 
   def new
@@ -13,7 +15,9 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(params[:message])
 
     if @message.save
-      @messages = Message.paginate(:page => params[:page]).order_by_latest
+      @messages = Message.page(params[:page])
+                         .includes(:user)
+                         .order_by_latest
     end    
   end  
 
@@ -25,7 +29,9 @@ class MessagesController < ApplicationController
     @message = current_user.messages.find(params[:id])
 
     if @message.update_attributes(params[:message])
-      @messages = Message.paginate(:page => params[:page]).order_by_latest
+      @messages = Message.page(params[:page])
+                         .includes(:user)
+                         .order_by_latest
     end   
   end   
 
@@ -40,6 +46,8 @@ class MessagesController < ApplicationController
   def destroy
     @message = current_user.messages.find(params[:id])
     @message.destroy
-    @messages = Message.paginate(:page => params[:page]).order_by_latest
+    @messages = Message.page(params[:page])
+                       .includes(:user)
+                       .order_by_latest            
   end  
 end
