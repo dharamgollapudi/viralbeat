@@ -19,7 +19,7 @@ Demo Application
 Application is deployed on Heroku platform and is available for demonstration 
 at the following URL:
 
-http://viralheat.herokuapp.com
+http://viralbeat.herokuapp.com
 
 Any of the following accounts could be used to play with the application or
 a seperate account could be created.
